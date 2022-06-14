@@ -27,7 +27,6 @@ const todoController = {
   },
   put: function (req, res, next) {
     const id = req.body.id;
-    console.log(req.body);
     if (req.body.newTodo) {
       todoModel
         .findByIdAndUpdate(id, {
@@ -42,9 +41,7 @@ const todoController = {
           res.json("updata newtodo that bai");
         });
     } else {
-      console.log(req.body.id);
       const isCompleted = req.body.isCompleted;
-      console.log(typeof isCompleted);
       todoModel
         .findByIdAndUpdate(id, {
           isCompleted: isCompleted,
@@ -59,7 +56,6 @@ const todoController = {
     }
   },
   delete: function (req, res, next) {
-    console.log(req.body);
     const id = req.body.id;
     todoModel
       .deleteOne({ _id: id })
