@@ -15,7 +15,6 @@ const Todo = (props) => {
         },
       })
       .then(function (response) {
-        console.log(response);
         getTodoListFromApiAfterChange();
       })
       .catch(function (error) {
@@ -24,10 +23,6 @@ const Todo = (props) => {
   };
 
   useEffect(() => {
-    console.log("chay khi edditing thay doi ");
-    // set trang thai todoEdit cua component nay
-    // if (editing && editing.todo) {
-    // }
     setTodoEdit(editing);
     if (editing) {
       document.querySelector(".editing").focus();
@@ -36,23 +31,17 @@ const Todo = (props) => {
 
   const handleEdit = (todo) => {
     setEditTodo(todo);
-    console.log(todo);
     // set thang editting o app bang setEditTodo
   };
 
   const handleSave = (todo) => {
-    console.log("chay khi save");
     setEditTodo();
-    console.log(todoEdit);
-    console.log(todo);
     axios
       .put("http://localhost:4000/api/todo", {
         id: todo._id,
         newTodo: todoEdit.todo,
       })
       .then(function (response) {
-        console.log(response);
-        console.log(todoEdit);
         getTodoListFromApiAfterChange();
       })
       .catch(function (error) {
@@ -68,7 +57,6 @@ const Todo = (props) => {
         isCompleted: !todo.isCompleted,
       })
       .then(function (response) {
-        console.log(response);
         getTodoListFromApiAfterChange();
       })
       .catch(function (error) {
@@ -77,7 +65,6 @@ const Todo = (props) => {
   };
 
   const handleChage = (e) => {
-    console.log(e.target.value);
     const newOb = { ...todoEdit };
     newOb.todo = e.target.value;
     setTodoEdit(newOb);
