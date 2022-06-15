@@ -14,7 +14,7 @@ const todoController = {
   post: function (req, res, next) {
     todoModel
       .create({
-        todo: req.body.todo,
+        todo: req.body.todo.trim(),
         isCompleted: req.body.isCompleted,
       })
       .then((data) => {
@@ -60,7 +60,7 @@ const todoController = {
     todoModel
       .deleteOne({ _id: id })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         res.json("delete thanh cong");
       })
       .catch((err) => {

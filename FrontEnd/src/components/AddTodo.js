@@ -5,7 +5,7 @@ const AddTodo = (props) => {
   const { getTodoListFromApiAfterChange } = props;
   const [valueInput, setValueInput] = useState("");
   const handleAdd = () => {
-    if (valueInput) {
+    if (true) {
       setValueInput("");
       // console.log(valueInput);
       axios
@@ -15,6 +15,7 @@ const AddTodo = (props) => {
         })
         .then(function (response) {
           // console.log(response);
+          console.log("post thanh cong ");
           getTodoListFromApiAfterChange();
         })
         .catch(function (error) {
